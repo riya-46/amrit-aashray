@@ -24,7 +24,7 @@ function Navbar() {
             className="h-16 w-16 shrink-0 rounded-2xl object-contain shadow-sm"
           />
           <div className="min-w-0">
-            <p className="text-3xl font-black leading-tight text-[#174b5a] sm:text-4xl">
+            <p className="text-[2.15rem] font-black leading-tight text-[#f47c13] [-webkit-text-stroke:1px_#b45b17] sm:text-[2.6rem]">
               Amrit Aashray
             </p>
           </div>
@@ -42,7 +42,7 @@ function Navbar() {
         </nav>
 
         <a
-          className="hidden items-center gap-3 rounded-full bg-[#f47c13] px-7 py-4 text-xl font-black text-[#143743] shadow-[0_16px_34px_rgba(244,124,19,0.28)] transition hover:-translate-y-0.5 hover:bg-[#ff922b] lg:inline-flex"
+          className="hidden items-center gap-3 rounded-full border-4 border-[#f47c13] bg-[#ffd166] px-7 py-4 text-xl font-black text-[#143743] shadow-[0_16px_34px_rgba(255,209,102,0.34)] transition hover:-translate-y-0.5 hover:bg-[#ffc64d] lg:inline-flex"
           href="#volunteer"
         >
           <HeartHandshake size={24} />
@@ -77,7 +77,7 @@ function Navbar() {
               </a>
             ))}
             <a
-              className="mt-1 inline-flex w-max items-center gap-2 rounded-full bg-[#f28c28] px-5 py-3 font-bold text-white"
+              className="mt-1 inline-flex w-max items-center gap-2 rounded-full border-4 border-[#f47c13] bg-[#ffd166] px-5 py-3 font-bold text-[#143743]"
               href="#volunteer"
               onClick={() => setIsOpen(false)}
             >

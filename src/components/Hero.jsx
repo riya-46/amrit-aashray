@@ -1,15 +1,15 @@
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 function Hero() {
   return (
     <section className="overflow-hidden bg-[#fffaf5]" id="home">
-      <div className="mx-auto grid min-h-[76svh] max-w-7xl items-center gap-12 px-5 py-16 lg:grid-cols-[1fr_0.82fr] lg:px-8 lg:py-20">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-14 sm:py-16 lg:min-h-[calc(100svh-96px)] lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.82fr)] lg:gap-14 lg:px-8 lg:py-12 xl:gap-16">
         <div className="max-w-3xl">
-          <h1 className="text-4xl font-black leading-[1.05] text-[#1f4d5c] sm:text-5xl lg:text-7xl">
+          <h1 className="text-[clamp(2.45rem,8vw,4rem)] font-black leading-[1.06] text-[#1f4d5c] sm:text-[clamp(3.25rem,7vw,4.65rem)] lg:text-[clamp(3.8rem,5vw,5.35rem)]">
             Spreading education with love and awareness with purpose.
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#625446] sm:text-xl">
+          <p className="mt-5 max-w-2xl text-base leading-7 text-[#625446] sm:text-lg sm:leading-8 xl:text-xl">
             Amrit Aashray is a youth-led initiative supporting children through
             education with love and care, spreading social awareness, and
             building women safety solutions for safer communities.
@@ -32,22 +32,9 @@ function Hero() {
             </a>
           </div>
 
-          <div className="mt-10 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
-            {["Education Support", "Awareness Drives", "Women Safety App"].map(
-              (item) => (
-                <div
-                  className="flex items-center gap-2 rounded-lg border border-[#f2d6bd] bg-white px-4 py-3 text-sm font-bold text-[#1f4d5c] shadow-sm"
-                  key={item}
-                >
-                  <ShieldCheck className="text-[#f28c28]" size={18} />
-                  {item}
-                </div>
-              ),
-            )}
-          </div>
         </div>
 
-        <div className="hero-logo-wrap">
+        <div className="hero-logo-wrap lg:translate-y-8 xl:translate-y-10">
           <div className="hero-logo-frame">
             <img src="/logo.jpeg" alt="Amrit Aashray Logo" />
           </div>

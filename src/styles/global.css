@@ -81,7 +81,7 @@ img {
 }
 
 .hero-logo-frame {
-  width: min(560px, 92vw);
+  width: clamp(280px, 38vw, 500px);
   aspect-ratio: 1;
   padding: clamp(8px, 1.8vw, 16px);
   border: 1px solid #f2d6bd;
@@ -97,6 +97,12 @@ img {
   object-fit: contain;
 }
 
+@media (max-width: 1023px) {
+  .hero-logo-frame {
+    width: min(360px, 86vw);
+  }
+}
+
 .mini-card,
 .work-card,
 .roadmap-card,
@@ -110,13 +116,18 @@ img {
 
 .mini-card {
   display: flex;
-  gap: 14px;
-  min-height: 176px;
+  gap: 10px;
+  min-height: 128px;
   align-items: flex-start;
-  padding: 24px;
+  padding: 6px 12px;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease;
+}
+
+.mini-card svg {
+  flex-shrink: 0;
+  margin-top: 6px;
 }
 
 .mini-card:hover {
@@ -138,38 +149,196 @@ img {
 .work-card p,
 .gallery-card p,
 .roadmap-card p {
-  margin: 6px 0 0;
+  margin: 8px 0 0;
   color: #625446;
   line-height: 1.6;
 }
 
-.work-card {
-  min-height: 260px;
-  padding: 24px;
+.about-chip {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #f47c13;
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: #1f4d5c;
+  background:
+    linear-gradient(135deg, rgba(255, 209, 102, 0.22), rgba(255, 255, 255, 0.92)),
+    #fff;
+  box-shadow: 0 14px 34px rgba(244, 124, 19, 0.12);
+  font-size: 0.95rem;
+  font-weight: 900;
+  transform: translateY(0);
   transition:
-    transform 180ms ease,
-    box-shadow 180ms ease;
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
-.work-card:hover {
-  box-shadow: 0 24px 58px rgba(31, 77, 92, 0.13);
-  transform: translateY(-3px);
+.about-chip:hover,
+.about-chip:focus-within {
+  border-color: #d86608;
+  box-shadow: 0 22px 42px rgba(244, 124, 19, 0.2);
+  transform: translateY(-6px);
 }
 
-.work-card h3 {
-  margin-top: 22px;
-  font-size: 1.28rem;
-}
-
-.icon-badge {
+.about-chip-icon {
   display: inline-flex;
-  width: 54px;
-  height: 54px;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
+  border: 1px solid #f47c13;
   border-radius: 8px;
   color: #1f4d5c;
   background: #ffd166;
+  box-shadow: inset 0 -2px 0 rgba(244, 124, 19, 0.2);
+  transition: transform 180ms ease;
+}
+
+.about-chip:hover .about-chip-icon,
+.about-chip:focus-within .about-chip-icon {
+  transform: translateY(-1px) scale(1.04);
+}
+
+.work-carousel {
+  overflow: hidden;
+  padding: 10px 4px 28px;
+}
+
+.work-card-track {
+  display: flex;
+  gap: 20px;
+  animation: work-card-slide 24s ease-in-out infinite;
+}
+
+.work-carousel:hover .work-card-track,
+.work-carousel:focus-within .work-card-track {
+  animation-play-state: paused;
+}
+
+.work-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 100%;
+  min-height: 250px;
+  border-color: rgba(244, 124, 19, 0.42);
+  padding: 14px 28px 28px;
+  background:
+    linear-gradient(135deg, rgba(255, 209, 102, 0.2), rgba(255, 255, 255, 0.9) 42%),
+    #fff;
+  box-shadow: 0 20px 46px rgba(244, 124, 19, 0.12);
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+  animation: work-card-rise 24s ease-in-out infinite;
+}
+
+.work-card:nth-child(2) {
+  animation-delay: 6s;
+}
+
+.work-card:nth-child(3) {
+  animation-delay: 12s;
+}
+
+.work-card:nth-child(4) {
+  animation-delay: 18s;
+}
+
+.work-card::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 5px;
+  content: "";
+  background: linear-gradient(90deg, #f47c13, #ffd166);
+}
+
+.work-card:hover {
+  border-color: #f47c13;
+  box-shadow: 0 28px 62px rgba(244, 124, 19, 0.2);
+  transform: translateY(-6px);
+}
+
+.work-card:focus {
+  outline: 3px solid rgba(244, 124, 19, 0.32);
+  outline-offset: 4px;
+}
+
+.work-card h3 {
+  margin-top: 0;
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  line-height: 1.2;
+}
+
+.work-card-scroll {
+  position: relative;
+  height: auto;
+  margin-top: 18px;
+  overflow: visible;
+}
+
+.work-card-points {
+  margin: 0;
+  padding-left: 1.1rem;
+  list-style: disc;
+}
+
+.work-card-point {
+  color: #625446;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.65;
+  margin-top: 8px;
+}
+
+@keyframes work-card-slide {
+  0%,
+  18% {
+    transform: translateX(0);
+  }
+
+  25%,
+  43% {
+    transform: translateX(calc(-100% - 20px));
+  }
+
+  50%,
+  68% {
+    transform: translateX(calc(-200% - 40px));
+  }
+
+  75%,
+  93% {
+    transform: translateX(calc(-300% - 60px));
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes work-card-rise {
+  0%,
+  18% {
+    border-color: #f47c13;
+    box-shadow: 0 30px 64px rgba(244, 124, 19, 0.22);
+    transform: translateY(-6px) scale(1.01);
+  }
+
+  24%,
+  100% {
+    border-color: rgba(244, 124, 19, 0.42);
+    box-shadow: 0 20px 46px rgba(244, 124, 19, 0.12);
+    transform: translateY(0) scale(1);
+  }
 }
 
 .status-pill,
