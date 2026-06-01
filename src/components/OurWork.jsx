@@ -1,38 +1,99 @@
 const workItems = [
   {
     title: "Educating Children",
+    accent: "education",
     points: [
-      "We teach children from families who cannot afford regular education support.",
-      "Many of these children belong to families where parents survive through begging or daily struggle.",
-      "We personally guide them with patience, care, and consistency.",
-      "We provide notebooks, pens, pencils, and other basic stationery needed for learning.",
+      <>
+        We teach children from families who cannot afford{" "}
+        <strong>regular education support</strong>.
+      </>,
+      <>
+        Many of these children belong to families where parents survive through{" "}
+        <strong>begging or daily struggle</strong>.
+      </>,
+      <>
+        We personally guide them with <strong>patience, care, and consistency</strong>.
+      </>,
+      <>
+        We provide <strong>notebooks, pens, pencils, and basic stationery</strong>{" "}
+        needed for learning.
+      </>,
     ],
   },
   {
     title: "Spreading Awareness",
+    accent: "awareness",
     points: [
-      "We organize awareness around causes that directly affect community wellbeing.",
-      "DKMS stem cell donor registration is included as part of our awareness work.",
-      "We share clear information on women safety, health, and responsible action.",
-      "Our aim is to help people understand issues and take meaningful steps.",
+      {
+        text: (
+          <>
+            On January 1, 2026, we shared an awareness post with steps to
+            register with <strong>DKMS</strong>.
+          </>
+        ),
+        linkText: "View post",
+        href: "https://www.instagram.com/p/DS9MUD6kv6o/",
+      },
+      {
+        text: "Through the DKMS website, we helped 25+ people register as potential stem cell donors.",
+        linkText: "Register with DKMS",
+        href: "https://www.dkms-india.org/register",
+      },
+      <>
+        We encourage <strong>blood donation</strong>, and our team members have
+        donated blood multiple times.
+      </>,
+      <>
+        We spread awareness about{" "}
+        <strong>organ donation, child education, child safety, trafficking</strong>,
+        and other important social causes.
+      </>,
     ],
   },
   {
     title: "Women Safety",
+    accent: "safety",
     points: [
-      "We work toward safer communities through awareness and practical support.",
-      "Vajrita is our women safety app focused on quick support and trusted contacts.",
-      "The initiative is shaped around real safety needs in everyday situations.",
-      "We want women and girls to feel more confident, prepared, and supported.",
+      <>
+        We created <strong>VAJRITA</strong>, a women safety app designed around{" "}
+        <strong>8 core protection features</strong>.
+      </>,
+      <>
+        The project was initiated on{" "}
+        <strong>International Women's Day, March 8, 2026</strong>, with a promise
+        to build those 8 safety features.
+      </>,
+      <>
+        VAJRITA is planned for launch on{" "}
+        <strong>Father's Day, June 21, 2026</strong>, as a symbol of protection
+        and care.
+      </>,
+      <>
+        Just as fathers stand as a shield for their children, VAJRITA aims to
+        offer <strong>dependable support</strong> when safety matters most.
+      </>,
     ],
   },
   {
     title: "Contribution and Celebration Drives",
+    accent: "contribution",
     points: [
-      "We plan non-monetary drives for items that are useful in daily life.",
-      "Stationery, clothes, household items, food packets, biscuits, and toys are included.",
-      "Celebration drives help children feel valued, included, and cared for.",
-      "Every contribution is organized around real needs so support reaches meaningfully.",
+      <>
+        Amrit Aashray is a <strong>zero-profit initiative</strong>, and we do not
+        accept monetary donations or financial support.
+      </>,
+      <>
+        We personally contribute <strong>basic necessities</strong> and encourage
+        others to support through useful items only.
+      </>,
+      <>
+        People contribute{" "}
+        <strong>clean old clothes, stationery, household items, food packets, and toys</strong>.
+      </>,
+      <>
+        On birthdays, festivals, and special occasions, we celebrate with the
+        children and <strong>share something to eat with them</strong>.
+      </>,
     ],
   },
 ];
@@ -66,21 +127,79 @@ function OurWork() {
         </div>
 
         <div className="work-carousel mt-10" aria-label="Our work highlights">
+          <div className="work-card-sizer" aria-hidden="true">
+            {workItems.map((item) => (
+              <article
+                className={`work-card work-card-${item.accent}`}
+                key={`sizer-${item.title}`}
+              >
+                <h3>{item.title}</h3>
+                <div className="work-card-scroll">
+                  <ul className="work-card-points">
+                    {item.points.map((point, index) => (
+                      <li
+                        className="work-card-point"
+                        key={`sizer-${item.title}-${index}`}
+                      >
+                        {typeof point === "object" && "text" in point ? (
+                          <>
+                            {point.text} {point.linkText}
+                          </>
+                        ) : typeof point === "string" ? (
+                          point
+                        ) : (
+                          point
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+
           <div className="work-card-track">
-          {workItems.map((item) => (
-            <article className="work-card" key={item.title} tabIndex={0}>
-              <h3>{item.title}</h3>
-              <div className="work-card-scroll" aria-label={`${item.title} details`}>
-                <ul className="work-card-points">
-                  {item.points.map((point) => (
-                    <li className="work-card-point" key={point}>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
+            {workItems.map((item) => (
+              <article
+                className={`work-card work-card-${item.accent}`}
+                key={item.title}
+                tabIndex={0}
+              >
+                <h3>{item.title}</h3>
+                <div className="work-card-scroll" aria-label={`${item.title} details`}>
+                  <ul className="work-card-points">
+                    {item.points.map((point, index) => (
+                      <li
+                        className="work-card-point"
+                        key={
+                          typeof point === "object" && "text" in point
+                            ? point.text
+                            : `${item.title}-${index}`
+                        }
+                      >
+                        {typeof point === "object" && "text" in point ? (
+                          <>
+                            {point.text}{" "}
+                            <a
+                              className="work-card-link"
+                              href={point.href}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {point.linkText}
+                            </a>
+                          </>
+                        ) : typeof point === "string" ? (
+                          point
+                        ) : (
+                          point
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>

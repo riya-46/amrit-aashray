@@ -5,9 +5,9 @@ const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Our Work", href: "#work" },
-  { label: "Impact", href: "#impact" },
-  { label: "Gallery", href: "#gallery" },
   { label: "Vision", href: "#vision" },
+  { label: "Gallery", href: "#gallery" },
+  { label: "Impact", href: "#impact" },
   { label: "Contact", href: "#contact" },
 ];
 

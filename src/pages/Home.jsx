@@ -14,10 +14,10 @@ function Home() {
       <Hero />
       <About />
       <OurWork />
-      <Impact />
+      <Vision />
       <Gallery />
       <Volunteer />
-      <Vision />
+      <Impact />
       <Contact />
     </MainLayout>
   );
