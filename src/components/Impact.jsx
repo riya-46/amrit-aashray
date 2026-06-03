@@ -1,53 +1,108 @@
-import { Camera, MapPin, MessageCircle, Rocket } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { BookOpenCheck, HeartHandshake, Megaphone, Users } from "lucide-react";
 
-const stats = [
+const impactItems = [
   {
-    icon: Camera,
-    value: "33+",
-    label: "awareness posts",
+    icon: BookOpenCheck,
+    value: 25,
+    suffix: "+",
+    title: "Children Supported",
   },
   {
-    icon: MessageCircle,
-    value: "146+",
-    label: "Instagram community",
+    icon: Users,
+    value: 147,
+    suffix: "+",
+    title: "People Connected",
   },
   {
-    icon: MapPin,
-    value: "Gorakhpur",
-    label: "local initiative",
+    icon: Megaphone,
+    value: 3,
+    suffix: "+",
+    title: "Awareness Initiatives",
   },
   {
-    icon: Rocket,
-    value: "In progress",
-    label: "women safety app",
+    icon: HeartHandshake,
+    value: 5,
+    suffix: "+",
+    title: "Contribution & Celebration Drives",
   },
 ];
 
-function Impact() {
+function prefersReducedMotion() {
   return (
-    <section className="section bg-[#1f4d5c] text-white" id="impact">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
-        <div>
-          <p className="section-kicker text-[#ffd166]">Impact</p>
-          <h2 className="section-title text-white">
-            A young initiative growing through consistency and trust.
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
+function Impact() {
+  const sectionRef = useRef(null);
+  const [hasEntered, setHasEntered] = useState(() => prefersReducedMotion());
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) {
+      return undefined;
+    }
+
+    if (prefersReducedMotion()) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasEntered(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -18% 0px", threshold: 0.2 },
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section
+      className="section impact-section bg-[#fff3e7]"
+      id="impact"
+      ref={sectionRef}
+    >
+      <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 lg:grid-cols-2 lg:gap-10 lg:px-8">
+        <div className="impact-intro max-w-xl">
+          <p className="section-kicker">IMPACT</p>
+          <h2 className="section-title impact-title">
+            Small steps.
+            <br />
+            Real impact.
+            <br />
+            <span>Growing through care.</span>
           </h2>
-          <p className="mt-5 text-lg leading-8 text-[#e8f0ec]">
-            The current impact is built through awareness posts, volunteer
-            interest, local conversations, and ongoing planning for safer
-            community tools.
+          <p className="impact-balance-note">
+            Measured progress across learning support, awareness, and community
+            care.
           </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          {stats.map((item) => {
+          {impactItems.map((item) => {
             const Icon = item.icon;
 
             return (
-              <article className="impact-card" key={item.label}>
-                <Icon className="text-[#ffd166]" size={26} />
-                <strong>{item.value}</strong>
-                <span>{item.label}</span>
+              <article className="impact-card" key={item.title}>
+                <div className="impact-card-metric">
+                  <span className="impact-card-icon" aria-hidden="true">
+                    <Icon size={22} />
+                  </span>
+                  <strong>
+                    <CountUp end={item.value} isActive={hasEntered} />
+                    {item.suffix}
+                  </strong>
+                </div>
+                <h3>{item.title}</h3>
               </article>
             );
           })}
@@ -55,6 +110,42 @@ function Impact() {
       </div>
     </section>
   );
+}
+
+function CountUp({ end, isActive }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isActive) {
+      return undefined;
+    }
+
+    if (prefersReducedMotion()) {
+      const frameId = requestAnimationFrame(() => setCount(end));
+      return () => cancelAnimationFrame(frameId);
+    }
+
+    let frameId;
+    const duration = 1100;
+    const startTime = performance.now();
+
+    const updateCount = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const easedProgress = 1 - (1 - progress) ** 3;
+
+      setCount(Math.round(easedProgress * end));
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(updateCount);
+      }
+    };
+
+    frameId = requestAnimationFrame(updateCount);
+
+    return () => cancelAnimationFrame(frameId);
+  }, [end, isActive]);
+
+  return count;
 }
 
 export default Impact;

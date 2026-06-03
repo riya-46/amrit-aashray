@@ -16,9 +16,9 @@ function Home() {
       <OurWork />
       <Vision />
       <Gallery />
-      <Volunteer />
       <Impact />
       <Contact />
+      <Volunteer />
     </MainLayout>
   );
 }

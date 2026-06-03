@@ -121,7 +121,7 @@ function Gallery() {
           <div className="w-full">
             <p className="section-kicker">Gallery</p>
             <h2 className="section-title">
-              Real moments of learning, caring, sharing and acts of love with support.
+              Real moments of learning, caring, sharing and acts of love with support...
             </h2>
           </div>
         </div>

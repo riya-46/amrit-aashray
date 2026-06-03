@@ -11,8 +11,22 @@ const roadmap = [
 function Vision() {
   return (
     <section className="section bg-[#fffaf5]" id="vision">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[1fr_0.9fr] lg:px-8">
-        <div>
+      <div className="mx-auto grid max-w-7xl items-stretch gap-10 px-5 lg:grid-cols-2 lg:px-8">
+        <div className="vision-roadmap-column order-2 lg:order-1">
+          <div className="roadmap-card">
+            <h3>What we are building toward</h3>
+            <div className="mt-5 space-y-4">
+              {roadmap.map((item) => (
+                <div className="roadmap-item" key={item}>
+                  <CheckCircle2 size={22} />
+                  <p>{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="vision-copy-column order-1 lg:order-2">
           <p className="section-kicker">Vision</p>
           <h2 className="section-title">
             Building toward an orphanage where every child can grow with dignity.
@@ -25,18 +39,6 @@ function Vision() {
             zero-profit contribution drives is the foundation for that larger
             dream.
           </p>
-        </div>
-
-        <div className="roadmap-card">
-          <h3>What we are building toward</h3>
-          <div className="mt-5 space-y-4">
-            {roadmap.map((item) => (
-              <div className="roadmap-item" key={item}>
-                <CheckCircle2 size={22} />
-                <p>{item}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
