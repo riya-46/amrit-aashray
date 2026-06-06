@@ -11,12 +11,12 @@ function Footer() {
           <div>
             <p className="text-lg font-extrabold">Amrit Aashray</p>
             <p className="text-sm text-[#ffd166]">
-              Education with Love & Care | Awareness | Women Safety
+              Educating Children • Inspiring Awareness • Building a Better Future
             </p>
           </div>
         </a>
         <p className="text-sm text-[#d8e7e2]">
-          &copy; {new Date().getFullYear()} Amrit Aashray. All rights reserved.
+          &copy; 2025–Present Amrit Aashray. All rights reserved.
         </p>
       </div>
     </footer>

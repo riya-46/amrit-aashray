@@ -1,102 +1,86 @@
-import { ArrowRight, HeartHandshake, MapPin, MessageCircle } from "lucide-react";
-
 function Contact() {
   return (
     <section className="section contact-section bg-[#fffaf5]" id="contact">
-      <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 lg:grid-cols-[0.76fr_1.24fr] lg:gap-12 lg:px-8">
-        <div className="contact-intro max-w-xl">
-          <p className="section-kicker">CONTACT</p>
-          <h2 className="section-title contact-title">Let's Connect.</h2>
-          <p className="contact-subtitle">
-            Volunteer, collaborate, support, or simply reach out.
-          </p>
-        </div>
-
-        <div className="contact-grid">
-          <a
-            className="contact-card"
-            href="https://www.instagram.com/amritaashray/"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <span className="contact-card-icon" aria-hidden="true">
-              <InstagramIcon />
-            </span>
-            <span className="contact-card-label">Instagram</span>
-            <strong>@amritaashray</strong>
-            <small>Open Instagram profile</small>
-          </a>
-
-          <a
-            className="contact-card"
-            href="https://wa.me/919076627906"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <span className="contact-card-icon" aria-hidden="true">
-              <MessageCircle size={21} />
-            </span>
-            <span className="contact-card-label">WhatsApp</span>
-            <strong>+91 90766 27906</strong>
-            <small>Message Us</small>
-          </a>
-
-          <div className="contact-card">
-            <span className="contact-card-icon" aria-hidden="true">
-              <MapPin size={21} />
-            </span>
-            <span className="contact-card-label">Location</span>
-            <strong>Gorakhpur</strong>
-            <small>Uttar Pradesh, India</small>
+      <div className="contact-content mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="contact-primary-row">
+          <div className="contact-intro max-w-xl">
+            <p className="section-kicker">CONTACT</p>
+            <h2 className="section-title contact-title">Let's Connect.</h2>
+            <p className="contact-subtitle">
+              Volunteer, collaborate, support, or simply reach out.
+            </p>
           </div>
 
-          <a
-            className="contact-card contact-card-volunteer"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdiM03QHQQ_pn8vVXe7LjDlUT36pzD3pSR_Ny-iz-puv9LKKQ/viewform"
-            rel="noopener noreferrer"
-            target="_blank"
-            aria-label="Apply now to become a volunteer"
-          >
-            <span className="contact-card-icon" aria-hidden="true">
-              <HeartHandshake size={21} />
+          <div className="contact-link-item contact-location">
+            <span className="contact-brand-icon contact-brand-icon-location" aria-hidden="true">
+              <LocationPinIcon />
             </span>
-            <span className="contact-card-label">Volunteer</span>
-            <strong>Become a Volunteer</strong>
-            <small>
-              Support children's education, awareness campaigns, and community
-              initiatives.
-            </small>
-            <span className="contact-card-button">
-              Apply Now
-              <ArrowRight size={16} />
-            </span>
-          </a>
+            <div>
+              <span className="contact-link-label">Location</span>
+              <strong className="contact-location-text">
+                <span>Gorakhpur</span>
+                <span className="contact-location-nowrap">Uttar Pradesh</span>
+                <span>India</span>
+              </strong>
+            </div>
+          </div>
+
+          <div className="contact-social-links" aria-label="Social contact links">
+            <a
+              className="contact-link-item contact-social-item"
+              href="https://chat.whatsapp.com/EDb0mHbKSMs1Yo8rdpCQsE"
+              rel="noopener noreferrer"
+              target="_blank"
+              aria-label="Join Amrit Aashray WhatsApp group"
+            >
+              <span className="contact-brand-icon" aria-hidden="true">
+                <img src="/gallery/whatsapplogo.jpg" alt="" />
+              </span>
+              <div>
+                <span className="contact-link-label">WhatsApp</span>
+                <strong>Join Group</strong>
+              </div>
+            </a>
+
+            <a
+              className="contact-link-item contact-social-item"
+              href="https://www.instagram.com/amritaashray/"
+              rel="noopener noreferrer"
+              target="_blank"
+              aria-label="Open Amrit Aashray Instagram profile"
+            >
+              <span className="contact-brand-icon" aria-hidden="true">
+                <img src="/gallery/instalogo.jpg" alt="" />
+              </span>
+              <div>
+                <span className="contact-link-label">Instagram</span>
+                <strong>DM and follow</strong>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function InstagramIcon() {
+function LocationPinIcon() {
   return (
-    <svg
-      aria-hidden="true"
-      fill="none"
-      height="21"
-      viewBox="0 0 24 24"
-      width="21"
-    >
-      <rect
-        height="16"
-        rx="5"
-        stroke="currentColor"
-        strokeWidth="2"
-        width="16"
-        x="4"
-        y="4"
+    <svg aria-hidden="true" height="64" viewBox="0 0 64 74" width="56">
+      <path
+        d="M32 4C19.12 4 8.68 14.26 8.68 26.9c0 15.82 18.9 36.46 22.28 40.03a1.43 1.43 0 0 0 2.08 0c3.38-3.57 22.28-24.21 22.28-40.03C55.32 14.26 44.88 4 32 4Z"
+        fill="#f20d0d"
       />
-      <circle cx="12" cy="12" r="3.2" stroke="currentColor" strokeWidth="2" />
-      <circle cx="17" cy="7" fill="currentColor" r="1.2" />
+      <circle cx="32" cy="27" fill="#fffaf5" r="10.8" />
+      <ellipse
+        cx="32"
+        cy="67"
+        fill="none"
+        rx="25"
+        ry="5.2"
+        stroke="#f20d0d"
+        strokeWidth="2.4"
+      />
     </svg>
   );
 }

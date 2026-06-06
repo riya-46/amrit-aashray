@@ -1,5 +1,26 @@
 import { ArrowRight } from "lucide-react";
 
+const awarenessActions = [
+  {
+    title: "DKMS",
+    tagline: "Become a Potential Lifesaver",
+    image: "/gallery/DKMS%20LOGO.jpg",
+    href: "https://docs.google.com/forms/d/e/1FAIpQLScyIeaYRVtKMLl40fzdsgVsCIH5XAstZQa6dTGy91Xu8jkZog/viewform?usp=sharing&ouid=117364201097427208916",
+  },
+  {
+    title: "Blood Donation",
+    tagline: "Every Drop Counts.",
+    image: "/gallery/blood%20donation.jpg",
+    href: "https://docs.google.com/forms/d/e/1FAIpQLSel9vLrXOorioTY8FEISEguBTEpzDdYwXea5ErxV3lwwBfnyA/viewform?usp=sharing&ouid=117364201097427208916",
+  },
+  {
+    title: "Organ Donation",
+    tagline: "Live Beyond Life.",
+    image: "/gallery/organ donation symbol.jpg",
+    href: "https://docs.google.com/forms/d/e/1FAIpQLSel24FUKXTtRUubEyeU9B4wKGjl5tD2w-OXVdnZX3npfhzp-Q/viewform?usp=sharing&ouid=117364201097427208916",
+  },
+];
+
 function Hero() {
   return (
     <section className="overflow-hidden bg-[#fffaf5]" id="home">
@@ -35,6 +56,31 @@ function Hero() {
         </div>
 
         <div className="hero-logo-wrap lg:translate-y-8 xl:translate-y-10">
+          <div className="hero-awareness-panel" aria-label="Awareness registration links">
+            {awarenessActions.map((action) => (
+              <article className="hero-awareness-card" key={action.title}>
+                <div className="hero-awareness-main">
+                  <span className="hero-awareness-icon" aria-hidden="true">
+                    <img src={action.image} alt="" />
+                  </span>
+                  <div>
+                    <span className="hero-awareness-title">{action.title}</span>
+                    <p>{action.tagline}</p>
+                  </div>
+                </div>
+                <a
+                  className="hero-awareness-button"
+                  href={action.href}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Register
+                  <ArrowRight size={14} />
+                </a>
+              </article>
+            ))}
+          </div>
+
           <div className="hero-logo-frame">
             <img src="/logo.jpeg" alt="Amrit Aashray Logo" />
           </div>

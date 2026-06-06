@@ -6,21 +6,13 @@ function About() {
       <div className="mx-auto grid max-w-7xl items-stretch gap-12 px-5 lg:grid-cols-2 lg:px-8">
         <div className="space-y-6 text-lg leading-8 text-[#625446]">
           <p className="section-kicker">About Amrit Aashray</p>
-          <p>
-            Amrit Aashray is a youth-led social initiative from Gorakhpur,
-            started with the belief that meaningful change can begin with what
-            we are able to do today. As students, our current work focuses on
-            helping children learn with love, respect, care, and encouragement
-            while building the foundation for a long-term dream of creating an
-            orphanage where every child can grow in a safe and dignified
-            environment.
+          <p>Since 2025, Amrit Aashray has been working as a youth-led social initiative from Gorakhpur,
+             dedicated to supporting children through education, care, and awareness. Our long-term vision is
+              to create an orphanage where every child can grow in a safe, loving, and dignified environment.
           </p>
           <p>
-            Alongside education support, Amrit Aashray works on awareness for
-            women safety, responsible community action, and important health
-            causes. We are also exploring a women safety app and have supported
-            DKMS stem cell donation awareness to help more people understand how
-            donor registration can save lives.
+            We also raise awareness about women safety, health, blood donation, organ donation, 
+            and stem cell donor registration to inspire positive community action and meaningful social impact.
           </p>
         </div>
 

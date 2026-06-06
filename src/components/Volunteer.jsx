@@ -1,4 +1,4 @@
-import { ArrowRight, HeartHandshake } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 function Volunteer() {
   return (
@@ -10,39 +10,27 @@ function Volunteer() {
             <h2 className="section-title">
               Become a volunteer with Amrit Aashray.
             </h2>
+          </div>
+
+          <div className="volunteer-copy">
             <p className="mt-5 max-w-2xl text-lg leading-8 text-[#625446]">
               Support children's education, awareness campaigns, and community
               initiatives through consistent, meaningful action.
             </p>
-          </div>
-
-          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-            <a
-              className="primary-button"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdiM03QHQQ_pn8vVXe7LjDlUT36pzD3pSR_Ny-iz-puv9LKKQ/viewform"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Apply Now
-              <ArrowRight size={18} />
-            </a>
-            <a className="secondary-button" href="#contact">
-              Contact Details
-              <ArrowRight size={18} />
-            </a>
+            <div className="volunteer-action">
+              <a
+                className="primary-button"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdiM03QHQQ_pn8vVXe7LjDlUT36pzD3pSR_Ny-iz-puv9LKKQ/viewform"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Apply Now
+                <ArrowRight size={18} />
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-3 text-sm font-bold text-[#1f4d5c]">
-          {["Teach", "Design", "Research", "Spread Awareness", "Build Safety Tools"].map(
-            (item) => (
-              <span className="skill-chip" key={item}>
-                <HeartHandshake size={16} />
-                {item}
-              </span>
-            ),
-          )}
-        </div>
       </div>
     </section>
   );
